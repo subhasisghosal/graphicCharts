@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>Column Chart</title>
+	<script type="text/javascript" src="raphael-min.js"></script>
+	<script type="text/javascript" src="column.js"></script>
+	<script type="text/javascript">
+		var c = new MyChart({
+			"chart": {
+				"height": "600",
+				"width": "800",
+				"margin": "50",
+				"caption": "Column Chart"
+			},
+			"data": [
+	            {
+	                "label": "Jan",
+	                "value": "420000"
+	            },
+	            {
+	                "label": "Feb",
+	                "value": "810000"
+	            },
+	            {
+	                "label": "Mar",
+	                "value": "720000"
+	            },
+	            {
+	                "label": "Apr",
+	                "value": "550000"
+	            },
+	            {
+	                "label": "May",
+	                "value": "910000"
+	            },
+	            {
+	                "label": "Jun",
+	                "value": "510000"
+	            },
+	            {
+	                "label": "Jul",
+	                "value": "680000"
+	            }
+        	]
+    	});
+		c.render();
+	</script>
+</head>
+<body>
+	<div id="holder"></div>
+</body>
+</html>
