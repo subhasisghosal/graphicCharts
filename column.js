@@ -1,9 +1,9 @@
-var paper, height=600, width=800, margin=50;
+var paper, height, width, margin;
 	function MyChart(obj){
-		this.height = obj.chart.height,
-		this.width = obj.chart.width,
-		this.margin = obj.chart.margin,
-		this.caption = obj.chart.caption;
+		height = parseInt(obj.chart.height),
+		width = parseInt(obj.chart.width),
+		margin = parseInt(obj.chart.margin),
+		caption = obj.chart.caption;
 
 		function stLine(fromX,fromY,toX,toY){
 			return paper.path("M"+fromX+" "+fromY+"L"+toX+" "+toY).attr("stroke-width", "2").attr("arrow-end", "open").toBack();
@@ -34,7 +34,7 @@ var paper, height=600, width=800, margin=50;
 			var col_wi = (width-margin)/(obj.data.length*2);		
 			var max = findMax(obj.data);
 			var ratio = (height-margin)/max;
-
+//Drawing Axis & DIvisions
 			stLine(margin/2, height-margin, margin/2, margin).attr("stroke-opacity","50");
 			stLine(margin/2, height-margin, width, height-margin);
 			var step = (height-margin*2)/5;
@@ -43,8 +43,12 @@ var paper, height=600, width=800, margin=50;
 				paper.text(0, height-margin-step*i, (max/5)*i)
 					.attr("text-anchor", "start");
 			};
-			
-			paper.text(margin, width/2, "caption");
+//Drawing Caption
+			paper.text(width/2, margin/2, caption)
+				.attr("font-family","Helvetica")
+				.attr("font-size", "26")
+				.toFront();
+//Drawing the Chart & Labels
 			for (var i = 0; i < obj.data.length; i++) {
 				paper.rect(margin+i*col_wi*2, height-obj.data[i].value*ratio, col_wi, obj.data[i].value*ratio-margin)
 					.attr("fill", "cornflowerblue");
