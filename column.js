@@ -46,12 +46,19 @@ var paper, height, width, margin;
 //Drawing Caption
 			paper.text(width/2, margin/2, caption)
 				.attr("font-family","Helvetica")
-				.attr("font-size", "26")
+				.attr("font-size", margin/3)
 				.toFront();
 //Drawing the Chart & Labels
 			for (var i = 0; i < obj.data.length; i++) {
 				paper.rect(margin+i*col_wi*2, height-obj.data[i].value*ratio, col_wi, obj.data[i].value*ratio-margin)
-					.attr("fill", "cornflowerblue");
+					.attr("fill", "cornflowerblue")
+					.mouseover(function(e){
+						this.attr("fill", "#ffc481")
+							.attr("title", "Text");
+					})
+					.mouseout(function(){
+						this.attr("fill", "cornflowerblue")
+					});
 				paper.text(margin+i*col_wi*2,height-margin/2-obj.data[i].value*ratio, obj.data[i].value)
 					.attr("text-anchor", "start");
 				paper.text(margin+i*col_wi*2,height-margin/2,obj.data[i].label)
